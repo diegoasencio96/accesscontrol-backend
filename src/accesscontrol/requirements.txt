@@ -1,0 +1,4 @@
+django==2.2
+https://github.com/darklow/django-suit/tarball/v2
+pillow
+django-cleanup

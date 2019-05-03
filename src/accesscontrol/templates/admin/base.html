@@ -1,0 +1,17 @@
+{% extends 'admin/base.html' %}
+{% load i18n admin_static suit_tags %}
+{% block extrastyle %}
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href='{% static "suit/css/font-awesome.min.css" %}' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+{% endblock %}
+{% block title %} Administración del Sistema {% endblock %}
+{% block footer_links %}
+    Soporte: <a href="mailto:contacto@diegoasencio.co" target="_blank">contacto@diegoasencio.co</a>
+{% endblock %}
+
+{% block copyright %}
+    <span class="hidden-md-down"></span>
+    Desarrollado por Diego A Asencio C
+    <br> Todos los derechos reservados
+{% endblock %}

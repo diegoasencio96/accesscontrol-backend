@@ -1,0 +1,73 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            Sistema de Control de Acceso - ParqueSoft Meta
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">Bienvenidos al sitio web de administración</h4>
+            <p class="card-text">En este sitio podrás administrar y gestionar la
+                información de control, autentificación y de acceso de usuarios
+                al edificio principal (Casa 1) de las instalaciones de ParqueSoft Meta.</p>
+            <p></p>
+            <a href="http://parquesoftmeta.com" target="_blank" class="btn btn-primary">Ir a ParqueSoft Meta</a>
+            <a href="http://diegoasencio.co" class="btn btn-primary-outline" target="_blank">Soporte técnico</a>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+        <div class="card">
+          <center><div class="card-header">Aperturas de la puerta principal</div></center>
+          <div class="card-body">
+            <br><h5 align="center" id="opening_count" class="card-title">0</h5><br>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card ">
+          <center><div class="card-header">Usuarios registrados</div></center>
+          <div class="card-body">
+            <br><h5 align="center" id="user_count" class="card-title">0</h5><br>
+          </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: '/total-perfiles/',
+                datatype: 'json',
+                success: function(data) {
+                    var user_count = document.getElementById("user_count");
+                    user_count.innerHTML = data['count'];
+                }
+            }).fail( function() {
+                alert( 'Error!!' );
+            });
+
+            $.ajax({
+                url: '/total-registros/',
+                datatype: 'json',
+                success: function(data2) {
+                    var opening_count = document.getElementById("opening_count");
+                    opening_count.innerHTML = data2['count'];
+                }
+            }).fail( function() {
+                alert( 'Error 2!!' );
+            });
+
+        });
+    </script>
+
+
+
+{% endblock %}
